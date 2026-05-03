@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@theme {
+  --color-andalusia-cream: #FAF7F2;
+  --color-andalusia-ivory: #F5EDE3;
+  --color-andalusia-sand: #E5D9C8;
+  --color-andalusia-gold: #C4A35A;
+  --color-andalusia-gold-dark: #A68B3C;
+  --color-andalusia-teal: #1A6B5C;
+  --color-andalusia-teal-dark: #145449;
+  --color-andalusia-teal-light: #2D9B87;
+  --color-andalusia-terra: #C17B50;
+  --color-andalusia-terra-light: #D4956A;
+  --color-andalusia-ink: #2C2016;
+  --color-andalusia-brown: #4A3728;
+  --color-andalusia-sage: #4A7C59;
+  --color-andalusia-rose: #B85C5C;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+    background: #FAF7F2;
+  }
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: #F5EDE3; }
+  ::-webkit-scrollbar-thumb { background: #C4A35A; border-radius: 4px; }
+}
+
+/* Fonts */
+.font-poem {
+  font-family: 'Amiri', 'Scheherazade New', 'Traditional Arabic', Georgia, serif;
+  line-height: 2.2;
+  letter-spacing: 0.01em;
+}
+.font-title {
+  font-family: 'Amiri', 'Scheherazade New', 'Traditional Arabic', Georgia, serif;
+}
+
+/* Animations */
+.fade-in { animation: fadeIn 0.35s ease-out; }
+.slide-up { animation: slideUp 0.3s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Navigation */
+.nav-tab {
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #6B5E50;
+}
+.nav-tab:hover { color: #2C2016; }
+.nav-tab.active {
+  border-bottom-color: #1A6B5C;
+  color: #145449;
+  font-weight: 700;
+}
+
+/* Cards */
+.card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid #E5D9C8;
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(44,32,22,0.04);
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: 0 3px 12px rgba(44,32,22,0.07); }
+
+/* Verse display box */
+.verse-box {
+  background: linear-gradient(135deg, #145449 0%, #1A6B5C 100%);
+  color: #F5EDE3;
+  border: 1px solid #C4A35A;
+  border-radius: 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background: #1A6B5C;
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+.btn-primary:hover:not(:disabled) { background: #145449; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(26,107,92,0.3); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-secondary {
+  background: white;
+  color: #4A3728;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid #E5D9C8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+.btn-secondary:hover { background: #F5EDE3; border-color: #C4A35A; }
+
+.btn-success {
+  background: #4A7C59;
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-success:hover { background: #3B6447; }
+
+/* Pattern chars - / for mutaharik, ٥ for sakin */
+
+/* Tafila boxes */
+.tafila-box {
+  display: inline-block;
+  background: #F5EDE3;
+  border: 1px solid #C4A35A;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  margin: 0.15rem;
+  color: #4A3728;
+  font-family: 'Amiri', 'Scheherazade New', 'Traditional Arabic', Georgia, serif;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+/* Islamic geometric decoration - CSS only */
+.pattern-border {
+  position: relative;
+}
+.pattern-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    #C4A35A 0px,
+    #C4A35A 8px,
+    transparent 8px,
+    transparent 12px,
+    #1A6B5C 12px,
+    #1A6B5C 20px,
+    transparent 20px,
+    transparent 24px
+  );
+  border-radius: 3px 3px 0 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .font-poem { font-size: 1rem; line-height: 2; }
+  .card { padding: 1rem; }
+}
